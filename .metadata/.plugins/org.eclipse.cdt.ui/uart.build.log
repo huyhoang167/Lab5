@@ -1,0 +1,33 @@
+16:17:50 **** Incremental Build of configuration Debug for project uart ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:100:31: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  100 |    HAL_UART_Transmit(&huart2, str, sprintf(str, "%s","Hello\r\n"), 1000);
+      |                               ^~~
+      |                               |
+      |                               char *
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:338,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:725:73: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  725 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~^~~~~
+arm-none-eabi-gcc -o "uart.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\MCU\test1\uart\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="uart.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: uart.elf
+ 
+arm-none-eabi-size   uart.elf 
+arm-none-eabi-objdump -h -S  uart.elf  > "uart.list"
+arm-none-eabi-objcopy  -O ihex  uart.elf  "uart.hex"
+   text	   data	    bss	    dec	    hex	filename
+  10316	    120	   1712	  12148	   2f74	uart.elf
+Finished building: default.size.stdout
+ 
+Finished building: uart.hex
+ 
+Finished building: uart.list
+ 
+
+16:17:51 Build Finished. 0 errors, 1 warnings. (took 1s.477ms)
+

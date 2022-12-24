@@ -1,0 +1,4 @@
+../Core/Src/software_timer.c:16:6:setTimer1	16	static
+../Core/Src/software_timer.c:21:6:setTimer2	16	static
+../Core/Src/software_timer.c:26:6:TimerRun	4	static
+../Core/Src/software_timer.c:40:6:Stop_timer	4	static

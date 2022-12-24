@@ -1,0 +1,35 @@
+/*
+ * fsm.c
+ *
+ *  Created on: Dec 24, 2022
+ *      Author: Hoang
+ */
+#include "fsm.h"
+#include "main.c"
+char command[50];
+int command_index = 0;
+int command_done = 0;
+int command_status = WAITING_START;
+void uart_communiation_fsm(){
+	switch(command_status){
+		case WAITING_START:
+			if (buffer[index_buffer-1] == '!'){
+				command_status = WAITING_END;
+				command_index = 0;
+			}
+			break;
+		case WAITING_END:
+			if (buffer[index_buffer-1] == '#'){
+				command_status = WAITING_START;
+				command[command_index] = '\n';
+				command_done = 1;
+
+			}
+			else{
+				command[command_index++] = buffer[index_buffer-1];
+				if (command_index == 50) command_index = 0;
+			}
+			break;
+	}
+}
+

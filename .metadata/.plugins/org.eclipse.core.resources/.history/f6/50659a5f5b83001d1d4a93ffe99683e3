@@ -1,0 +1,16 @@
+/*
+ * fsm.h
+ *
+ *  Created on: Dec 24, 2022
+ *      Author: Hoang
+ */
+
+#ifndef INC_FSM_H_
+#define INC_FSM_H_
+
+#include "main.h"
+void command_parser_fsm(ADC_HandleTypeDef* hadc1, UART_HandleTypeDef* huart2);
+void uart_communiation_fsm(ADC_HandleTypeDef* hadc1, UART_HandleTypeDef* huart2);
+
+
+#endif /* INC_FSM_H_ */

@@ -1,0 +1,21 @@
+/*
+ * software_timer.h
+ *
+ *  Created on: Dec 24, 2022
+ *      Author: Hoang
+ */
+
+#ifndef INC_SOFTWARE_TIMER_H_
+#define INC_SOFTWARE_TIMER_H_
+
+
+extern int counter1;
+extern int timer1_flag;
+void setTimer1(int duration);  //millisecond
+extern int counter2;
+extern int timer2_flag;
+void setTimer2(int duration);  //millisecond
+
+void TimerRun();
+void Stop_timer();
+#endif /* INC_SOFTWARE_TIMER_H_ */

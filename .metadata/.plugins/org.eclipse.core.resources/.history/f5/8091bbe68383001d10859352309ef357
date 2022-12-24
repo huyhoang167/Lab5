@@ -1,0 +1,41 @@
+/*
+ * software_timer.c
+ *
+ *  Created on: Dec 24, 2022
+ *      Author: Hoang
+ */
+#include "software_timer.h"
+int counter1;
+int timer1_flag;
+
+int counter2;
+int timer2_flag;
+
+int TIMER_CYCLE=10;
+
+void setTimer1(int duration){
+	counter1=duration/TIMER_CYCLE;
+	timer1_flag=0;
+}
+
+void setTimer2(int duration){
+	counter2=duration/TIMER_CYCLE;
+	timer2_flag=0;
+}
+
+void TimerRun(){
+	if(counter1>0){
+		counter1--;
+		if(counter1<=0){
+			timer1_flag=1;
+		}
+	}
+	if(counter2>0){
+		counter2--;
+		if(counter2<=0){
+			timer2_flag=1;
+		}
+	}
+}
+
+
